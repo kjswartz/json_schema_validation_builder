@@ -1,0 +1,2 @@
+class ValidationSchema < ApplicationRecord
+end
