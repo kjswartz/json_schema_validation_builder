@@ -48,6 +48,7 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
+  gem 'rspec-rails', '~> 6.1.0'
 end
 
 group :development do
@@ -62,13 +63,12 @@ group :development do
 end
 
 group :test do
-  # Test framework
-  gem 'rspec-rails', '~> 5', '>= 5.1.2'
-  # RSpec results that your CI can read
-  gem 'rspec_junit_formatter'
-  # A library for setting up Ruby objects as test data.
+  gem 'pry-rails'
   gem 'factory_bot_rails'
+  gem 'shoulda-matchers'
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   # gem "capybara"
   # gem "selenium-webdriver"
 end
+
+gem "factory_bot", "~> 6.4"
