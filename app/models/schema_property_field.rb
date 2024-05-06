@@ -14,11 +14,7 @@ class SchemaPropertyField < ApplicationRecord
 
   private
   def field_details_schema_property
-    if get_schema_type == "object"
-      field_details&.to_schema_property || {}
-    else
-      field_details&.to_schema_property || {}
-    end
+    field_details&.to_schema_property || {}
   end
 
   def get_property_details

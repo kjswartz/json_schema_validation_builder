@@ -116,32 +116,4 @@ RSpec.describe SchemaPropertyFieldArray, type: :model do
       ) }.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
-
-  # describe "field_details#SchemaSerializer::ArrayDetails" do
-  #   context "with valid params" do
-  #     let(:array_property) { FactoryBot.create(
-  #       :schema_property_field,
-  #       :array_type,
-  #       name: "address",
-  #       title: "Address History",
-  #       description: "Enter last 5 years",
-  #       required: true,
-  #       validation_schema: validation_schema,
-  #       field_details: SchemaSerializer::ArrayDetails.new(min_items: 1, max_items: 2, unique_items: true)
-  #     )}
-
-  #     describe "SchemaPropertyFieldArray#to_schema_property" do
-  #       it "builds complete array specific validation properties" do
-  #         expect(array_property.to_schema_property).to eq({
-  #           "description" => "Enter last 5 years",
-  #           "title"       => "Address History",
-  #           "type"        => "array",
-            # "minItems"    => 1,
-            # "maxItems"    => 2,
-  #           "uniqueItems" => true,
-  #         })
-  #       end
-  #     end
-  #   end
-  # end
 end
