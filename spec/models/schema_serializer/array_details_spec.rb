@@ -8,7 +8,7 @@ RSpec.describe SchemaSerializer::ArrayDetails, type: :model do
       SchemaSerializer::ArrayDetails.new(min_items: 1, max_items: 5, unique_items: true, 
         item: {
           "type" => "SchemaPropertyFieldString",
-          "class_attributes" => { "name" => "alias", "description" => "List of aliases", "title" => "Aliases", "required" => true },
+          "class_attributes" => { "name" => "alias"},
           "field_details" => { "min_length" => 1 }
         }
       )
@@ -19,9 +19,7 @@ RSpec.describe SchemaSerializer::ArrayDetails, type: :model do
         "maxItems"    => 5,
         "uniqueItems" => true,
         "items"       => {
-          "description" => "List of aliases",
           "minLength"   => 1,
-          "title"       => "Aliases",
           "type"        => "string"
         }
       })
