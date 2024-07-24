@@ -2,7 +2,8 @@
 - Ruby 3.0.2
 
 # run tests
-bundle exec rspec
+- ensure the docker container is running `docker-compose up -d`
+- then you can run `docker-compose exec web bundle exec rspec` in your terminal to run the tests via the docker container
 
 # JSON Schema 2020-12
 ## ValidationSchema
