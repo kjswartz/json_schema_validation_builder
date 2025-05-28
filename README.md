@@ -1,5 +1,5 @@
 # README
-- Ruby 3.0.2
+- Ruby 3.3.4
 
 # run tests
 - ensure the docker container is running `docker-compose up -d`
