@@ -1,6 +1,7 @@
 class ValidationSchema < ApplicationRecord
   validates :name, presence: true
-  has_many :schema_property_fields
+  belongs_to :user
+  has_many :schema_property_fields, dependent: :destroy
 
   serialize :all_of, SchemaSerializer::AllOfDetails
 
