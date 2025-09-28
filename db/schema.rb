@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_03_132536) do
+ActiveRecord::Schema[7.1].define(version: 2025_09_28_162549) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,6 +27,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_03_132536) do
     t.index ["validation_schema_id"], name: "index_schema_property_fields_on_validation_schema_id"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email", null: false
+    t.string "password_digest", null: false
+    t.string "role", default: "user"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
   create_table "validation_schemas", force: :cascade do |t|
     t.string "name", null: false
     t.string "description"
@@ -34,7 +45,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_03_132536) do
     t.jsonb "all_of"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_validation_schemas_on_user_id"
   end
 
   add_foreign_key "schema_property_fields", "validation_schemas"
+  add_foreign_key "validation_schemas", "users"
 end
