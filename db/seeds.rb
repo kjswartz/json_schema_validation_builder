@@ -8,12 +8,15 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+
+
 def build_string_property(name, title, required)
   SchemaPropertyFieldString.new(name: name, title: title, required: required)
 end
 
-def create_validation_schema(name, title, description, schema_property_fields)
+def create_validation_schema(user_id, name, title, description, schema_property_fields)
   ValidationSchema.find_or_create_by!(
+    user_id: user_id,
     name: name,
     title: title,
     description: description,
@@ -22,7 +25,13 @@ def create_validation_schema(name, title, description, schema_property_fields)
 end
 
 def create_user_signup_validation_schema
+  user = User.find_or_create_by(email: "test@example.com") do |u|
+    u.password = "password"
+    u.password_confirmation = "password"
+  end
+
   create_validation_schema(
+    user.id,
     "new_user",
     "New User Signup",
     "Validation schema for signing up new users",
